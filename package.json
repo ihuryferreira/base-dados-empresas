@@ -1,0 +1,38 @@
+{
+  "name": "basedados",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+
+  "bin": "app.js",
+
+  "scripts": {
+    "start": "node app.js"
+  },
+
+  "pkg": {
+    "scripts": [
+      "views/**/*.ejs"
+    ],
+    "assets": [
+      "views/**/*",
+      "public/**/*",
+      "empresas.db",
+      "cnpjs.csv"
+    ]
+  },
+
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+
+  "dependencies": {
+    "axios": "^1.16.1",
+    "csv-parser": "^3.2.1",
+    "ejs": "^5.0.2",
+    "express": "^5.2.1",
+    "open": "^8.4.2",
+    "sqlite3": "^6.0.1"
+  }
+}

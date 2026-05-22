@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  padding: 20px;
+}
+
+/* Título */
+h1 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Formulário de busca */
+form {
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+/* Container da tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* Cabeçalho */
+th {
+  background: #333;
+  color: #fff;
+  padding: 12px;
+}
+
+/* Células */
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Linhas */
+tr:hover {
+  background: #f1f1f1;
+}
+
+/* Linha vazia */
+td[colspan] {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}

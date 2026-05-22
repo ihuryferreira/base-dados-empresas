@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empresas</title>
+
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+
+  <h1>Lista de Empresas</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Município</th>
+        <th>UF</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% empresas.forEach(emp => { %>
+        <tr>
+          <td><%= emp.nome || '-' %></td>
+          <td><%= emp.email || '-' %></td>
+          <td><%= emp.telefone || '-' %></td>
+          <td><%= emp.municipio || '-' %></td>
+          <td><%= emp.uf || '-' %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+</body>
+</html>
