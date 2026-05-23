@@ -22,18 +22,32 @@ app.get("/", (req, res) => {
 
 // busca
 app.get("/buscar", (req, res) => {
-  const termo = req.query.q;
+  const { q, municipio, uf } = req.query;
 
-  if (!termo) return res.redirect("/");
+  let sql = "SELECT * FROM empresas WHERE 1=1";
+  const params = [];
 
-  const like = `%${termo}%`;
+  // busca por nome ou CNPJ
+  if (q) {
+    sql += " AND (nome LIKE ? OR cnpj LIKE ?)";
+    params.push(`%${q}%`, `%${q}%`);
+  }
 
-  db.all(`
-    SELECT * FROM empresas
-    WHERE nome LIKE ? OR cnpj LIKE ?
-    LIMIT 50
-  `, [like, like], (err, rows) => {
+  // filtro município
+  if (municipio) {
+    sql += " AND municipio = ?";
+    params.push(municipio);
+  }
 
+  // filtro UF
+  if (uf) {
+    sql += " AND uf = ?";
+    params.push(uf);
+  }
+
+  sql += " ORDER BY id DESC LIMIT 50";
+
+  db.all(sql, params, (err, rows) => {
     if (err) {
       console.error(err.message);
       return res.render("error", { message: "Erro na busca" });
@@ -42,6 +56,7 @@ app.get("/buscar", (req, res) => {
     res.render("index", { empresas: rows });
   });
 });
+
 
 // importar sem travar o servidor
 processarCSV()

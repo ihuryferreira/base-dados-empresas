@@ -11,6 +11,9 @@ Thumbs.db
 # Banco de dados
 empresas.db
 
+# arquivo csv
+cnpjs.csv
+
 # Executáveis
 *.exe
 

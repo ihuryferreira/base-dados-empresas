@@ -7,15 +7,58 @@
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
 
 <body class="bg-gray-100 font-sans p-6">
 
   <h1 class="text-2xl font-bold mb-4">Lista de Empresas</h1>
 
+  <!-- FORMULÁRIO -->
+  <form action="/buscar" method="get" class="mb-4 flex gap-2 flex-wrap">
+
+    <!-- Busca -->
+    <input 
+      type="text" 
+      name="q" 
+      placeholder="Nome ou CNPJ"
+      class="border p-2 rounded"
+    />
+
+    <!-- Município -->
+    <select name="municipio" class="border p-2 rounded">
+      <option value="">Todos Municípios</option>
+      <option value="GOIANIA">GOIANIA</option>
+      <option value="SAO PAULO">SAO PAULO</option>
+      <option value="BRASILIA">BRASILIA</option>
+    </select>
+
+    <!-- UF -->
+    <select name="uf" class="border p-2 rounded">
+      <option value="">Todas UFs</option>
+      <option value="GO">GO</option>
+      <option value="SP">SP</option>
+      <option value="DF">DF</option>
+    </select>
+
+    <!-- Botão Buscar -->
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
+      Buscar
+    </button>
+
+    <!-- Limpar -->
+    <a href="/" class="bg-gray-500 text-white px-4 py-2 rounded flex items-center">
+      Limpar
+    </a>
+
+  </form>
+
+  <!-- TABELA -->
   <div class="bg-white rounded-lg shadow overflow-x-auto">
     
-    <table class="w-full text-sm text-left">
+    <table class="w-full text-sm text-left border">
 
       <!-- Cabeçalho -->
       <thead class="bg-gray-800 text-white">
@@ -24,6 +67,8 @@
           <th class="px-4 py-3">Nome</th>
           <th class="px-4 py-3">Email</th>
           <th class="px-4 py-3">Telefone</th>
+          <th class="px-4 py-3">Instagram</th>
+          <th class="px-4 py-3">Situação</th>
           <th class="px-4 py-3">Município</th>
           <th class="px-4 py-3">UF</th>
         </tr>
@@ -34,24 +79,27 @@
 
         <% if (empresas.length === 0) { %>
           <tr>
-            <td colspan="6" class="text-center py-6 text-gray-500">
+            <td colspan="8" class="text-center py-6 text-gray-500">
               Nenhuma empresa encontrada
             </td>
           </tr>
         <% } %>
 
         <% empresas.forEach(emp => { %>
-          <tr class="hover:bg-gray-100">
+          <tr class="hover:bg-gray-100 transition">
             <td class="px-4 py-2"><%= emp.cnpj || '-' %></td>
             <td class="px-4 py-2 font-semibold"><%= emp.nome || '-' %></td>
             <td class="px-4 py-2"><%= emp.email || '-' %></td>
             <td class="px-4 py-2"><%= emp.telefone || '-' %></td>
+            <td class="px-4 py-2"><%= emp.instagram || '-' %></td>
+            <td class="px-4 py-2"><%= emp.situacao || '-' %></td>
             <td class="px-4 py-2"><%= emp.municipio || '-' %></td>
             <td class="px-4 py-2 font-bold"><%= emp.uf || '-' %></td>
           </tr>
         <% }) %>
 
       </tbody>
+
     </table>
 
   </div>
