@@ -4,9 +4,12 @@ const path = require("path");
 const db = require("./database");
 const { processarCSV } = require("./importar");
 
-app.use(express.static('public'));
+// Configuração de Views (EJS)
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+// Configuração de Arquivos Estáticos
+app.use(express.static(path.join(__dirname, "public")));
 
 // página inicial (últimos registros)
 app.get("/", (req, res) => {
