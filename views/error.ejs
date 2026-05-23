@@ -1,42 +1,92 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Erro</title>
-  <style>
-    body {
-      font-family: Arial;
-      background: #f4f4f4;
-      text-align: center;
-      padding-top: 100px;
-    }
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/img/favicon2.png" type="image/x-icon" />
+    <link rel="icon" sizes="32x32" href="/img/favicon2.png" />
+    <link rel="apple-touch-icon" href="/img/favicon2.png" />
+    <title>Página Não Encontrada</title>
+    <!-- Importação de fonte moderna -->
+    <link href="https://googleapis.com" rel="stylesheet" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    h1 {
-      font-size: 40px;
-      color: #e74c3c;
-    }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #fafafa;
+        color: #1a1a1a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        padding: 20px;
+      }
 
-    p {
-      font-size: 18px;
-      color: #555;
-    }
+      .container {
+        max-width: 500px;
+      }
 
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 15px;
-      background: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-  </style>
-</head>
-<body>
+      /* O grande número 404 com efeito sutil */
+      .error-code {
+        font-size: 120px;
+        font-weight: 800;
+        line-height: 1;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+      }
 
-  <h1>⚠ Ocorreu um erro</h1>
-  <p><%= message %></p>
+      h1 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #111827;
+      }
 
-  <a href="/">Voltar</a>
+      p {
+        font-size: 16px;
+        color: #4b5563;
+        line-height: 1.6;
+        margin-bottom: 32px;
+      }
 
-</body>
+      /* Botão moderno com transição suave */
+      .btn-home {
+        display: inline-block;
+        background-color: #111827;
+        color: #ffffff;
+        padding: 12px 24px;
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 8px;
+        transition:
+          background-color 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .btn-home:hover {
+        background-color: #1f2937;
+        transform: translateY(-1px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="error-code">404</div>
+      <h1>Página não encontrada</h1>
+      <p>
+        O link que você acessou pode estar quebrado ou a página foi removida.
+        <%= message %>
+      </p>
+      <a href="/" class="btn-home">Voltar para o início</a>
+    </div>
+  </body>
 </html>

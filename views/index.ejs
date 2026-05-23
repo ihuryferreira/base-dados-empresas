@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/img/favicon2.png" type="image/x-icon">
+  <link rel="icon" sizes="32x32" href="/img/favicon2.png">
+  <link rel="apple-touch-icon" href="/img/favicon2.png">
   <title>Empresas</title>
 
   <!-- Tailwind -->
@@ -12,97 +15,119 @@
   <link rel="stylesheet" href="/styles/main.css">
 </head>
 
-<body class="bg-gray-100 font-sans p-6">
+<body class="bg-gray-100 font-sans flex flex-col min-h-screen">
 
-  <h1 class="text-2xl font-bold mb-4">Lista de Empresas</h1>
+  <!-- TÍTULO -->
+  <h1 class="text-3xl font-bold mt-6 text-center hero-title bloquear-selecao-text">
+    Lista de Empresas
+  </h1>
 
-  <!-- FORMULÁRIO -->
-  <form action="/buscar" method="get" class="mb-4 flex gap-2 flex-wrap">
+  <!-- CONTAINER -->
+  <div class="w-full max-w-6xl px-4 mx-auto">
 
-    <!-- Busca -->
-    <input 
-      type="text" 
-      name="q" 
-      placeholder="Nome ou CNPJ"
-      class="border p-2 rounded"
-    />
+    <!-- FORMULÁRIO -->
+    <form action="/buscar" method="get" class="flex gap-4 flex-wrap justify-center mt-6">
 
-    <!-- Município -->
-    <select name="municipio" class="border p-2 rounded">
-      <option value="">Todos Municípios</option>
-      <option value="GOIANIA">GOIANIA</option>
-      <option value="SAO PAULO">SAO PAULO</option>
-      <option value="BRASILIA">BRASILIA</option>
-    </select>
+      <input 
+        type="text" 
+        name="q" 
+        placeholder="Nome ou CNPJ"
+        class="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
 
-    <!-- UF -->
-    <select name="uf" class="border p-2 rounded">
-      <option value="">Todas UFs</option>
-      <option value="GO">GO</option>
-      <option value="SP">SP</option>
-      <option value="DF">DF</option>
-    </select>
+      <select name="municipio" class="border p-2 rounded">
+        <option value="">Todos Municípios</option>
+        <option value="GOIANIA">GOIANIA</option>
+        <option value="SAO PAULO">SAO PAULO</option>
+        <option value="BRASILIA">BRASILIA</option>
+      </select>
 
-    <!-- Botão Buscar -->
-    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
-      Buscar
-    </button>
+      <select name="uf" class="border p-2 rounded">
+        <option value="">Todas UFs</option>
+        <option value="GO">GO</option>
+        <option value="SP">SP</option>
+        <option value="DF">DF</option>
+      </select>
 
-    <!-- Limpar -->
-    <a href="/" class="bg-gray-500 text-white px-4 py-2 rounded flex items-center">
-      Limpar
-    </a>
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+        Buscar
+      </button>
 
-  </form>
+      <a href="/" class="bg-gray-500 text-white px-4 py-2 rounded flex items-center hover:bg-gray-600 transition">
+        Limpar
+      </a>
 
-  <!-- TABELA -->
-  <div class="bg-white rounded-lg shadow overflow-x-auto">
-    
-    <table class="w-full text-sm text-left border">
+    </form>
 
-      <!-- Cabeçalho -->
-      <thead class="bg-gray-800 text-white">
-        <tr>
-          <th class="px-4 py-3">CNPJ</th>
-          <th class="px-4 py-3">Nome</th>
-          <th class="px-4 py-3">Email</th>
-          <th class="px-4 py-3">Telefone</th>
-          <th class="px-4 py-3">Instagram</th>
-          <th class="px-4 py-3">Situação</th>
-          <th class="px-4 py-3">Município</th>
-          <th class="px-4 py-3">UF</th>
-        </tr>
-      </thead>
+    <!-- TABELA -->
+    <div class="bg-white rounded-lg shadow overflow-x-auto mt-6 mb-10">
+      
+      <table class="w-full text-sm text-left border">
 
-      <!-- Corpo -->
-      <tbody class="divide-y">
-
-        <% if (empresas.length === 0) { %>
+        <thead class="bg-gray-800 text-white">
           <tr>
-            <td colspan="8" class="text-center py-6 text-gray-500">
-              Nenhuma empresa encontrada
-            </td>
+            <th class="px-4 py-3">CNPJ</th>
+            <th class="px-4 py-3">Nome</th>
+            <th class="px-4 py-3">Email</th>
+            <th class="px-4 py-3">Telefone</th>
+            <th class="px-4 py-3">Instagram</th>
+            <th class="px-4 py-3">Situação</th>
+            <th class="px-4 py-3">Município</th>
+            <th class="px-4 py-3">UF</th>
           </tr>
-        <% } %>
+        </thead>
 
-        <% empresas.forEach(emp => { %>
-          <tr class="hover:bg-gray-100 transition">
-            <td class="px-4 py-2"><%= emp.cnpj || '-' %></td>
-            <td class="px-4 py-2 font-semibold"><%= emp.nome || '-' %></td>
-            <td class="px-4 py-2"><%= emp.email || '-' %></td>
-            <td class="px-4 py-2"><%= emp.telefone || '-' %></td>
-            <td class="px-4 py-2"><%= emp.instagram || '-' %></td>
-            <td class="px-4 py-2"><%= emp.situacao || '-' %></td>
-            <td class="px-4 py-2"><%= emp.municipio || '-' %></td>
-            <td class="px-4 py-2 font-bold"><%= emp.uf || '-' %></td>
-          </tr>
-        <% }) %>
+        <tbody class="divide-y">
 
-      </tbody>
+          <% if (empresas.length === 0) { %>
+            <tr>
+              <td colspan="8" class="text-center py-6 text-gray-500">
+                Nenhuma empresa encontrada
+              </td>
+            </tr>
+          <% } %>
 
-    </table>
+          <% empresas.forEach(emp => { %>
+            <tr class="hover:bg-gray-100 transition">
+              <td class="px-4 py-2"><%= emp.cnpj ? emp.cnpj : '-' %></td>
+              <td class="px-4 py-2 font-semibold"><%= emp.nome ? emp.nome : '-' %></td>
+              <td class="px-4 py-2"><%= emp.email ? emp.email : '-' %></td>
+              <td class="px-4 py-2"><%= emp.telefone ? emp.telefone : '-' %></td>
+              <td class="px-4 py-2"><%= emp.instagram ? emp.instagram : '-' %></td>
+              <td class="px-4 py-2"><%= emp.situacao ? emp.situacao : '-' %></td>
+              <td class="px-4 py-2"><%= emp.municipio ? emp.municipio : '-' %></td>
+              <td class="px-4 py-2 font-bold"><%= emp.uf ? emp.uf : '-' %></td>
+            </tr>
+          <% }) %>
+
+        </tbody>
+
+      </table>
+
+    </div>
 
   </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-gray-400 py-8 px-4 mt-auto w-full">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+
+      <div class="text-white font-bold text-xl">
+        CaptarEmpresas<span class="text-blue-500">.</span>
+      </div>
+
+      <div class="text-sm text-center md:text-right">
+        <div>&copy; <%= new Date().getFullYear() %> CaptarEmpresas Corp. Todos os direitos reservados.</div>
+        <div class="text-xs text-gray-500 mt-1">
+          Desenvolvido por 
+          <a href="SEU_LINK_DO_GITHUB_OU_PORTFOLIO" target="_blank" class="text-blue-400 hover:underline">
+            Ihury Ferreira
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
 
 </body>
 </html>

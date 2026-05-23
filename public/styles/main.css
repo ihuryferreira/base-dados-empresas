@@ -1,0 +1,19 @@
+.hero-title {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  color: #030c26f5;
+  text-shadow: 4px 2px 4px rgba(10, 9, 10, 0.81);
+}
+
+.bloquear-selecao-text {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE 10+ e Edge antigo */
+  user-select: none; /* Padrão atual (Chrome, Edge, Opera) */
+}
+
+form {
+  justify-content: center;
+}
